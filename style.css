@@ -15,23 +15,23 @@ section{
 }
 
 #main{
-    background-image: url(img.zip/bgMAIN.png);
+    background-image: url(bgMAIN.png);
 }
 
 #about{
-    background-image: url(img.zip/bgABOUT.png);
+    background-image: url(bgABOUT.png);
 }
 
 #skills{
-    background-image: url(img.zip/bgSKILLS.png);
+    background-image: url(bgSKILLS.png);
 }
 
 #works{
-    background-image: url(img.zip/bgWORKS.png);
+    background-image: url(bgWORKS.png);
 }
 
 #comments{
-    background-image: url(img.zip/bgCOMMENTS.png); 
+    background-image: url(bgCOMMENTS.png); 
 }
 
 .main-block, .about-block, .skills-block, .works-block, .comments-block{
@@ -48,7 +48,7 @@ section{
 
 .main-content{
     background-image:
-    url(img.zip/form1.png);
+    url(form1.png);
     background-repeat: no-repeat;
     background-size: contain;
     width: 849px;
@@ -84,4 +84,19 @@ section{
 .button a {
     font-size: 20px;
     text-decoration: none;
+}
+
+.main-content{
+    z-index: 2;
+}
+
+.planet{
+    background: url(planet.png);
+    background-repeat: no-repeat;
+    width: 405px;
+    height: 330px;
+    transform: rotate(-176deg);
+    position: absolute;
+    right: 20px;
+    z-index: 1;
 }
