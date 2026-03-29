@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roberts</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 <body>
     <section id="main">
@@ -80,36 +81,29 @@
     <section id="works">
         <h1 class="title">Works</h1>
 
-        <div class="works-block">
-            <img src="work1.png">
-            <img src="work2.png">
-            <img src="work3.png">
-
+        <div class="swiper works-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="work1.png" alt="Work 1"><p class="slide-caption">Landing page for agency</p></div>
+                <div class="swiper-slide"><img src="work2.png" alt="Work 2"><p class="slide-caption">E-commerce product page</p></div>
+                <div class="swiper-slide"><img src="work3.png" alt="Work 3"><p class="slide-caption">Interactive portfolio UI</p></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
     </section>
 
     <section id="comments">
         <h1 class="title">Comments</h1>
         <div class="comments-block">
-            <img src="photo.png">
-            <h3>Eva</h3>
-            <p>Co-founder of Rocket Tech School</p>
-        </div>
-        <div class="comment">
-            <p>
-               Roberts has been learing code for about a year and hes made wonderful progress
-            </p>
+            <div class="comment-card">
+                <img src="photo.png" alt="Eva">
+                <div class="comment-bubble"><strong>Eva</strong> - Co-founder of Rocket Tech School<br>Roberts has been learning code for about a year and has made wonderful progress.</div>
             </div>
-             <div class="comment-card">
-       <img src="photo2.png">
-       <h3>Диана</h3>
-       <p>Product Lead Rocket Tech School</p>
-   </div>
-   <div class="comment">
-       <p>
-            Roberts is a good code writer. He understand the modern and simple requests
-       </p>
-   </div>
+            <div class="comment-card">
+                <img src="photo2.png" alt="Диана">
+                <div class="comment-bubble"><strong>Диана</strong> - Product Lead Rocket Tech School<br>Roberts is a good code writer. He understands modern and simple requests.</div>
+            </div>
         </div>
     </section>
 
@@ -132,5 +126,38 @@
 
 
     <script src="main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <script>
+            const swiper = new Swiper('.works-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                centeredSlides: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                },
+                effect: 'coverflow',
+                coverflowEffect: {
+                    rotate: 20,
+                    stretch: 20,
+                    depth: 150,
+                    modifier: 1,
+                    slideShadows: false,
+                },
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+            });
+        </script>
 </body>
 </html>
