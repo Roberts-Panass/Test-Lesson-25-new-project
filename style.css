@@ -4,6 +4,7 @@ url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Int
 *{
     margin: 0;
     font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
 }
 
 section{
@@ -371,4 +372,51 @@ footer{
 
 .footer-links a{
    margin-right: 15px;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.fixed-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    padding-right: 150px;
+}
+
+.nav-link{
+   width: 112px;
+   height: 40px;
+   border-radius: 12px;
+   border: 2px solid #000;
+   background-color: #FFF;
+   text-decoration: none;
+   color: #000;
+   font-size: 20px;
+   font-family: 'Comfortaa';
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-right: 20px;
+}
+
+.logo{
+   color: #BBFF2C;
+   font-size: 80px;
+   padding-left: 50px;
+}
+
+.active{
+    background-color: #BBFF2C;
 }
