@@ -1,68 +1,75 @@
-let menu = document.querySelector(".fixed-menu");
+const menu = document.querySelector(".fixed-menu");
+const mobileButton = document.querySelector(".mobile-button");
+const mobileMenu = document.querySelector(".mobile-menu");
+const body = document.body;
+const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+const sections = Array.from(document.querySelectorAll("section[id]"));
 
-menu.addEventListener("click", function(event){
-    let clickTarget = event.target;
-    let activeBtn = document.querySelector(".active");
+function removeActiveClass() {
+    navLinks.forEach(link => link.classList.remove("active"));
+}
 
-    if(clickTarget.classList.contains('nav-link')){
-        clickTarget.classList.add("active");
-        activeBtn.classList.remove("active");
-    }
-});
+function setActiveLink(link) {
+    if (!link) return;
+    removeActiveClass();
+    link.classList.add("active");
+}
 
-window.onscroll = function() {
-    let h = document.documentElement.clientHeight;
-};
+function closeMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add("hide");
+    body.classList.remove("off-scroll");
+}
 
-window.onscroll = function() {
-    let h = document.documentElement.clientHeight;
-    if (window.scrollY >= h*4 ) {
-        classLink = '.comments-link';
-    }
-    else if (window.scrollY >= h*3 ) {
-        classLink = '.works-link';
-    }
-    else if (window.scrollY >= h*2 ) {
-        classLink = '.skills-link';
-    }
-    else if (window.scrollY >= h ) {
-        classLink = '.about-link';
-    }
-    else {
-        classLink = '.main-link';
+function toggleMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.toggle("hide");
+    body.classList.toggle("off-scroll", !mobileMenu.classList.contains("hide"));
+}
+
+function handleNavClick(event) {
+    const link = event.target.closest(".nav-link");
+    if (!link) return;
+    setActiveLink(link);
+    closeMobileMenu();
+}
+
+function getActiveSectionId() {
+    const fromTop = window.scrollY + window.innerHeight / 2;
+    let currentId = sections.length ? sections[0].id : "";
+
+    sections.forEach(section => {
+        if (section.offsetTop <= fromTop) {
+            currentId = section.id;
+        }
+    });
+
+    return currentId;
+}
+
+function updateActiveLinkOnScroll() {
+    const activeSectionId = getActiveSectionId();
+    if (!activeSectionId) return;
+
+    const currentLink = document.querySelector(`.nav-link[href="#${activeSectionId}"]`);
+    if (!currentLink) return;
+
+    if (!currentLink.classList.contains("active")) {
+        setActiveLink(currentLink);
     }
 }
 
-let activeBtn = document.querySelector(".active");
-let newActiveBtn = document.querySelector(classLink);
-
-if (!newActiveBtn.classList.contains("active")) {
-    newActiveBtn.classList.add("active");
-    activeBtn.classList.remove("active");
+if (menu) {
+    menu.addEventListener("click", handleNavClick);
 }
 
- let classLink = '.main-link';
-window.onscroll = function() {
- let h = document.documentElement.clientHeight;
- if (window.scrollY >= h*4 ){
-   classLink = '.comments-link';
- }
- else if (window.scrollY >= h*3){
-   classLink = '.works-link';
- }
- else if (window.scrollY >= h*2 ){
-   classLink = '.skills-link';
- }
- else if (window.scrollY >= h){
-   classLink = '.about-link';
- }
- else{
-   classLink = '.main-link';
- }
- let activeBtn = document.querySelector('.active');
- let newActiveBtn = document.querySelector(classLink);
- if (!newActiveBtn.classList.contains('active')){
-   newActiveBtn.classList.add('active');
-   activeBtn.classList.remove('active')
- }
-};
+if (mobileButton) {
+    mobileButton.addEventListener("click", toggleMobileMenu);
+}
+
+if (mobileMenu) {
+    mobileMenu.addEventListener("click", handleNavClick);
+}
+
+window.addEventListener("scroll", updateActiveLinkOnScroll);
+window.addEventListener("load", updateActiveLinkOnScroll);

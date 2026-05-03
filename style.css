@@ -539,4 +539,55 @@ nav{
     transform: scale(1.05);
     box-shadow: 0 0 0 8px rgba(187, 255, 44, 0.2);
 }
+.button{
+    width: 150px;
+    height: 40px;
+    z-index: 2;
+} 
 
+.button a{
+    font-size: 15px;
+
+}
+
+.mobile-button{
+   display: none;
+   padding-top: 10px;
+   width: 40px;
+   position: absolute;
+   right: 20px;
+}
+.hide{
+   display: none;
+}
+@media (max-width: 1000px) {
+   .mobile-button {
+       display: block;
+   }
+}
+
+.mobile-menu{
+   position: absolute;
+   top: 0;
+   z-index: -1;
+   width: 100%;
+   background-color: #200153;
+   min-height: 100vh;
+}
+
+.mobile-nav{
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.mobile-nav-links .nav-link{
+   margin-bottom: 30px;
+   width: 210px;
+   height: 50px;
+}
+
+.off-scroll {
+    overflow: hidden;
+}
