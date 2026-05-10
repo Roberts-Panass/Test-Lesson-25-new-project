@@ -73,3 +73,8 @@ if (mobileMenu) {
 
 window.addEventListener("scroll", updateActiveLinkOnScroll);
 window.addEventListener("load", updateActiveLinkOnScroll);
+
+document.querySelectorAll(".mobile-btn").forEach(function(item){
+     item.classList.toggle('btn-hide');
+});
+
