@@ -25,6 +25,8 @@ function toggleMobileMenu() {
     if (!mobileMenu) return;
     mobileMenu.classList.toggle("hide");
     body.classList.toggle("off-scroll", !mobileMenu.classList.contains("hide"));
+    const hamburger = document.querySelector(".hamburger");
+    if (hamburger) hamburger.classList.toggle("open");
 }
 
 function handleNavClick(event) {
@@ -73,8 +75,4 @@ if (mobileMenu) {
 
 window.addEventListener("scroll", updateActiveLinkOnScroll);
 window.addEventListener("load", updateActiveLinkOnScroll);
-
-document.querySelectorAll(".mobile-btn").forEach(function(item){
-     item.classList.toggle('btn-hide');
-});
 

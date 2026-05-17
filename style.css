@@ -5,6 +5,7 @@ url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Int
     margin: 0;
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
+    box-sizing: border-box;
 }
 
 @media (max-width: 1000px) {
@@ -124,8 +125,8 @@ section{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
     position: relative;
+    padding: 60px 0;
 }
 
 #main{
@@ -161,10 +162,10 @@ section{
 }
 
 .main-content{
-    background-image:
-    url(form1.png);
+    background-image: url(form1.png);
     background-repeat: no-repeat;
     background-size: contain;
+    max-width: 90%;
     width: 849px;
     height: 223px;
     padding-left: 30px;
@@ -193,6 +194,12 @@ section{
     align-items: center;
     box-shadow: 5px 5px 0 #000000;
     margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 #000000;
 }
 
 .button a {
@@ -202,6 +209,27 @@ section{
 
 .main-content{
     z-index: 2;
+}
+
+.intro-content {
+    text-align: center;
+    color: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.intro-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.intro-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
 }
 
 .planet{
@@ -215,9 +243,14 @@ section{
     z-index: 1;
 }
 
-.moving-planet{
-    background: url(moving-planet.png);
-    background-repeat: no-repeat;
+
+/* Make images responsive to avoid horizontal overflow */
+img{max-width:100%;height:auto;display:block}
+
+.logo{
+    color: #BBFF2C;
+    font-size: 42px;
+    padding-left: 20px;
     width: 200px;
     height: 230px;
     transform: rotate(-15deg);
@@ -248,16 +281,17 @@ section{
 
 .about-content {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1100px;
     background: rgba(121, 42, 255, 0.85);
     border-radius: 20px;
     padding: 30px;
     margin: 40px auto;
     position: relative;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 30px;
+    flex-wrap: wrap;
 }
 
 .about-title {
@@ -269,21 +303,27 @@ section{
     font-family: 'Comfortaa';
 }
 
+.about-text{
+    flex: 1 1 480px;
+    color: #FFF;
+}
+
 .about-card {
     background-image: url(form2.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 380px;
-    min-height: 346px;
+    width: 320px;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 20px;
+    padding: 20px;
     position: relative;
-    box-shadow: 0 8px 20px rgba(0,0,0,.35);
-    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    border-radius: 14px;
+    flex: 0 0 320px;
 }
 
 .about-card p {
@@ -296,7 +336,9 @@ section{
 }
 
 .about-card img {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    width: 70%;
+    max-width: 200px;
 }
 
 .moving-cloud{
@@ -332,6 +374,13 @@ section{
     font-family: 'Comfortaa';
 }
 
+.languages {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
 .moving-planet2{
     background: url(moving-planet2.png);
     background-repeat: no-repeat;
@@ -343,7 +392,7 @@ section{
 }
 
 .moving-planet, .moving-planet2, .moving-cloud{
-    animation-name: planet_move;
+    animation-name: planet-move;
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -487,11 +536,98 @@ footer{
    margin-right: 15px;
 }
 
+/* Neater comments/testimonials styling */
+.comments-block{
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 40px auto 80px;
+}
+
+.comments-card{
+    background: #fff;
+    background-image: none;
+    border-radius: 14px;
+    padding: 20px;
+    width: 320px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.comment-avatar img{
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f0f0f0;
+    margin-bottom: 12px;
+}
+
+.comment-author{
+    font-weight: 700;
+    margin: 0;
+    font-family: 'Comfortaa';
+}
+
+.comment-role{
+    font-size: 0.95rem;
+    color: #666;
+    margin: 6px 0 12px;
+}
+
+.comment-bubble{
+    max-width: 100%;
+    border: none;
+    background: #f7f8fb;
+    color: #222;
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+@media (max-width: 800px){
+    .comments-block{flex-direction:column;align-items:center}
+    .nav-links{display:none}
+}
+
+/* Slightly smaller section titles for neatness */
+.title{font-size:48px;padding-top:40px}
+
+/* Tidy main hero */
+.main-title{font-size:56px}
+
+/* Desktop: show comments horizontally; allow horizontal scroll if needed */
+@media (min-width: 801px) {
+    .comments-block{
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 40px 20px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .comments-card{
+        min-width: 300px;
+        margin-right: 20px;
+        flex: 0 0 auto;
+    }
+
+    .comments-block::-webkit-scrollbar{height:10px}
+    .comments-block::-webkit-scrollbar-thumb{background:#e0e0e0;border-radius:6px}
+}
+
 nav{
-    position: fixed;
+    position: relative;
     top: 0;
     width: 100%;
     z-index: 10;
+    margin-bottom: 20px;
 }
 
 .fixed-menu{
@@ -505,7 +641,8 @@ nav{
     display: flex;
     justify-content: center;
     flex-grow: 1;
-    padding-right: 150px;
+    padding-right: 40px;
+    gap: 10px;
 }
 
 .nav-link{
@@ -522,6 +659,12 @@ nav{
    justify-content: center;
    align-items: center;
    margin-right: 20px;
+   transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #BBFF2C;
+    transform: scale(1.1);
 }
 
 .logo{
@@ -551,14 +694,41 @@ nav{
 }
 
 .mobile-button{
-   display: none;
-   padding-top: 10px;
-   width: 40px;
-   position: absolute;
-   right: 20px;
+    display: none;
+    padding-top: 10px;
+    width: 40px;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
 }
 .hide{
    display: none;
+}
+.mobile-btn.btn-hide {
+    display: none;
+}
+.hamburger {
+    width: 30px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: #BBFF2C;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 @media (max-width: 1000px) {
    .mobile-button {
@@ -569,7 +739,7 @@ nav{
 .mobile-menu{
    position: absolute;
    top: 0;
-   z-index: -1;
+   z-index: 11;
    width: 100%;
    background-color: #200153;
    min-height: 100vh;
@@ -590,4 +760,39 @@ nav{
 
 .off-scroll {
     overflow: hidden;
+}
+
+/* Layout fixes: fixed header, section spacing, center main content */
+body{
+    padding-top: 110px;
+    background: #f6f7fb;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+section{
+    min-height: 100vh;
+    padding: 80px 0;
+}
+
+.main-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    min-height: calc(100vh - 140px);
+}
+
+@media (max-width: 1000px) {
+    body{ padding-top: 90px; }
+    .main-title{ font-size: 40px; }
 }
